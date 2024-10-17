@@ -31,6 +31,11 @@ This project focused on object detection using the VOC dataset, which comprises 
 #### 6. Hardware Specifications
 - Training was conducted on a MacBook Air 2021 with an Apple M1 chip and 16GB of RAM, taking approximately 12 hours per training run due to limited computational resources.
 
+#### 7. Future Directions
+- **Larger Dataset**: Expand the dataset for improved generalization and robustness.
+- **Enhanced Computational Resources**: Use CPUs or TPUs to optimize model architectures, exploring deeper networks like ResNet.
+- **Advanced Bounding Box Loss**: Implement IoU and Focal Loss to enhance localization accuracy and address class imbalance.
+
 ## 1. Data Preprocessing
 
 The dataset used for this project is the VOC dataset, which consists of 20 classes. The dataset provides a rich set of images that facilitate training and evaluating object detection models.
@@ -147,16 +152,70 @@ In my experiment, I froze all the layers of the ResNet model except for the last
 
 ![images](./5_README_files/7cnn_images.png)
 
-![matrix](./5_README_files/confusion_matrix.png)
+| Confusion Matrix | Metrics CSV |
+|-------------------|-------------|
+| ![Confusion Matrix](./5_README_files/confusion_matrix.png) | ![Metrics CSV](./5_README_files/metrics_csv.png) |
 
+### Understanding the Confusion Matrix
 
+A confusion matrix is a tool used to evaluate the performance of a classification model. It provides a detailed breakdown of correct and incorrect predictions across different classes, making it easier to identify areas where the model excels or struggles. This matrix is particularly helpful for understanding model behavior beyond overall accuracy, allowing for a more nuanced assessment of performance.
 
+1. **Overall Accuracy**: The model achieves 62% accuracy, with classes like aeroplane, cat, and train performing well (over 70%). However, classes such as dining table, bottle, cow, and chair are below 40%.
 
+2. **Class Confusion**: The matrix shows interesting misclassifications, such as cats being predicted as dogs. This suggests a need for better feature differentiation.
 
+3. **Underrepresented Classes**: Some classes are underrepresented, like dining table (4 instances) and potted plant (15). The percentage of each class is consistent in training and validation, indicating that more data could improve accuracy.
 
+### Understanding Precision, Recall, and F1 Score
 
+- **Precision**: Precision measures the accuracy of positive predictions, calculated as true positives divided by the total predicted positives. For example, if the model predicts 100 instances as aeroplanes and 90 of those are correct, the precision for aeroplanes is 0.90.
 
+- **Recall**: Recall, or true positive rate, measures the ability to identify all relevant instances. It is calculated as true positives divided by the total actual positives. For instance, if there are 80 actual aeroplanes in the dataset and the model correctly identifies 60, the recall for aeroplanes is 0.75.
 
+- **F1 Score**: The F1 score is the harmonic mean of precision and recall, providing a balanced measure of a model's performance.
 
+### Key Insights from the Metrics Table
 
+1. **Overall Model Performance**: The model has an overall accuracy of 62%, with a balanced weighted average precision of 0.62 and F1-score of 0.61. This indicates a reasonably reliable model, though improvements can be made for certain classes.
+
+2. **Class-Specific Variability**: Performance varies significantly across classes. Classes like aeroplane (precision: 0.90) and train (F1-score: 0.84) perform well, while others like dining table (all metrics: 0.00) show a lack of predictive capability. This suggests the need for targeted data enhancement.
+
+3. **Recall Discrepancies**: The recall scores for many classes are notably low, particularly for those with fewer instances (e.g., dining table, bottle). This implies that while the model identifies certain classes well, it struggles with underrepresented categories, leading to missed predictions.
+
+### Bounding Box Evaluation Using Mean Squared Error (MSE)
+
+In object detection tasks, bounding boxes are used to localize objects within an image. To assess the performance of bounding box predictions, Mean Squared Error (MSE) can be employed. MSE measures the average squared differences between predicted and actual bounding box coordinates, providing a quantitative evaluation of localization accuracy.
+
+- **Formula**: MSE is calculated as follows:
+
+  $$
+  \text{MSE} = \frac{1}{n} \sum_{i=1}^{n}(y_i - \hat{y}_i)^2 
+  $$
+
+  where y_i is the true bounding box coordinate, y_hat_i is the predicted coordinate, and n is the total number of bounding boxes.
+
+- **Interpretation**: A lower MSE value indicates better localization accuracy. If the predicted bounding boxes are closely aligned with the actual object locations, the MSE will be minimal, suggesting that the model effectively identifies object positions within the images.
+
+Using MSE provides a straightforward way to evaluate bounding box predictions, helping to improve the performance of the object detection model over time.
+
+## 6. Hardware Specifications
+
+### Overview
+Training was conducted on a MacBook Air (2021) equipped with an Apple M1 chip and 16GB of RAM. The choice of hardware significantly impacted training times and model experimentation capabilities. Each training run took approximately 12 hours, reflecting the computational limits of the hardware and the complexity of the models used.
+
+### Limitations
+While the M1 chip offers notable performance, it may restrict the ability to conduct extensive hyperparameter tuning and experimentation with deeper networks or larger datasets. Future work may benefit from more powerful GPUs or TPUs to accelerate training and improve overall model performance.
+
+## 7. Future Work
+
+### Overview
+To enhance model performance and accuracy, several avenues for future work have been identified:
+
+1. **Larger Dataset**: Expanding the dataset will provide more diverse examples, improving generalization and reducing overfitting, particularly for underrepresented classes.
+
+2. **Optimized Hardware**: Utilizing CPU or TPU resources will facilitate more extensive experimentation and enable the use of deeper network architectures similar to ResNet, enhancing the model's learning capabilities.
+
+3. **Deeper Neural Networks and Modern Approaches**: Implementing more sophisticated architectures like EfficientNet, DenseNet, and YOLO can leverage advancements in deep learning for improved accuracy and efficiency in both classification and object detection tasks.
+
+4. **Improved Bounding Box Loss Functions**: Exploring advanced loss functions such as Intersection over Union (IoU) and Focal Loss can enhance bounding box predictions, leading to more accurate localization of objects within images.
 
