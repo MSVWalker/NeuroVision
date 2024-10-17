@@ -127,5 +127,41 @@ In my experiment, I froze all the layers of the ResNet model except for the last
 #### Key Features of ResNet Architecture:
 - **Residual Blocks**: ResNet uses shortcut or skip connections that bypass one or more layers. This helps prevent the vanishing gradient problem, allowing very deep networks to train successfully.
 - **Deep Networks**: ResNet architectures can be extremely deep, with ResNet-101 having 50+ layers, enabling the model to capture more complex patterns without performance degradation.
+<p align="center">
+  <img src="./5_README_files/resnet.png" alt="resnet">
+</p>
 
-- 
+- **Results**: From the figure, the green line indicates that ResNet achieved a validation accuracy of over **90%**.
+
+## 5. Model Results Analysis
+
+### Overview
+- Each model was evaluated based on classification accuracy and bounding box Mean Squared Error (MSE) on the validation set.
+- Key metrics such as F1 scores, precision, recall, and confusion matrices were analyzed to assess model performance.
+
+### 1. Best Model Results
+- **Model Architecture**: [e.g., ResNet, VGG, Simple CNN, etc.]
+- **Accuracy**: XX% on the validation set.
+- **Bounding Box MSE**: XX for the best-performing model.
+
+```bash
+| Metric         | Value      |
+|----------------|------------|
+| Accuracy       | XX%        |
+| F1 Score       | X.XX       |
+| Bounding Box MSE | X.XX       |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
