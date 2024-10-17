@@ -22,7 +22,7 @@ This project focused on object detection using the VOC dataset, which comprises 
   - **Filter, Kernel, and Batch Sizes**: Tuned filter sizes, kernel sizes, and batch sizes for optimal performance.
 
 #### 4. Transfer Learning with ResNet
-- The ResNet model achieved higher accuracy, benefiting from features learned on larger datasets while adapting to the specific task.
+- The ResNet model achieved higher accuracy, benefiting from features learned on larger datasets while adapting to this specific task.
 
 #### 5. Model Results Analysis
 - Each experiment was run for 100 epochs, evaluating models based on classification accuracy and bounding box MSE on the validation set. Accuracy trends over epochs were analyzed.
@@ -85,34 +85,47 @@ A Convolutional Neural Network (CNN) is a specialized deep learning model design
 
 In this project, CNNs were utilized to classify objects and predict their bounding boxes, enabling robust object recognition capabilities.
 
-### 3. Model Training - CNN Parameter Tuning
+
+## 3. Model Training - CNN Parameter Tuning
 
 In this section, we detail the parameter tuning experiments conducted during the training of our Convolutional Neural Networks (CNNs). The following parameters were systematically evaluated to assess their impact on model performance:
 
 #### 3.1 Training Set Size
 - **Sizes Tested**: 1,000, 2,500, 5,000, 7,800 images
-- **Objective**: To analyze how varying the training dataset size affects the model's accuracy and generalization capabilities.
+- **Takeaway**: Both training and validation accuracy greatly improved with increased images.
+- ![Image Number Skew](./5_README_files/image_number.png)
 
 #### 3.2 Convolutional Layers
 - **Layers Tested**: 1 layer, 3 layers, 5 layers, 7 layers
-- **Objective**: To find an optimal balance between model depth and accuracy, determining how additional layers influence performance.
+- **Takeaway**: To find an optimal balance between model depth and accuracy, determining how additional layers influence performance.
 
 #### 3.3 Augmentation Techniques
 - **Techniques Applied**: Gaussian Noise, Color Jitter, Rotation
-- **Objective**: To enhance model generalization by introducing variations in the training data, thereby improving robustness against overfitting.
+- **Takeaway**: Improved generalization by introducing variations in the training data, thereby improving robustness against overfitting.
+- ![Augmentation Skew](./5_README_files/augmentations.png)
+- ![Augmentation Skew2](./5_README_files/7cnns.png)
 
 #### 3.4 Filter, Kernel, and Batch Sizes
 - **Parameters Tuned**: Filter sizes, Kernel sizes, Batch sizes
-- **Objective**: To identify the optimal configurations that lead to improved performance and convergence rates during training.
+- **Takeaway**: To identify the optimal configurations that lead to improved performance and convergence rates during training.
 
 #### 3.5 Results and Observations
 - After conducting the parameter tuning experiments, we observed the following:
-  - **Training Set Size**: Increasing the dataset size generally improved model accuracy, but the improvements diminished beyond a certain point.
-  - **Convolutional Layers**: Models with 5 layers consistently outperformed those with fewer or more layers in terms of validation accuracy.
-  - **Augmentation Techniques**: Implementing augmentation significantly reduced overfitting, particularly with Gaussian noise.
-  - **Optimal Configurations**: Through experimentation, we identified specific combinations of filter and kernel sizes that yielded the best results.
+  - **Training Set Size**: Increasing the dataset size greatly improved model accuracy (from ~20% up to 40% on the validation set).
+  - **Convolutional Layers**: Models with 5 or 7 Conv layers tended to perfect the train ds, however struggled to generalize as well.
+  - **Augmentation Techniques**: Augmentation used to increase the training set diversity and reduce overfitting.
 
 #### 3.6 Conclusion
-The tuning of CNN parameters is crucial for achieving optimal model performance. Future work will involve further refinement of these parameters and exploration of additional techniques such as dropout and batch normalization.
+The tuning of CNN parameters is crucial for achieving optimal model performance. Future work should include more complex models - both deeper and more novel, such as residual layers, bottlenecks, dropout etc. 
 
+## 4. Transfer Learning with ResNet
 
+**Transfer learning** is a technique where a pre-trained model is used as the starting point for a different but related task. Instead of training a model from scratch, transfer learning allows leveraging the knowledge from models that were trained on large datasets. For this project, I utilized a pre-trained ResNet model, which was originally trained on the **ImageNet dataset**, consisting of **14 million images** from **1,000 different classes**.
+
+In my experiment, I froze all the layers of the ResNet model except for the last one, which was fine-tuned to adapt to the specific task at hand. This approach allowed the model to retain the rich feature representations learned from large-scale data while adapting to my specific dataset more efficiently.
+
+#### Key Features of ResNet Architecture:
+- **Residual Blocks**: ResNet uses shortcut or skip connections that bypass one or more layers. This helps prevent the vanishing gradient problem, allowing very deep networks to train successfully.
+- **Deep Networks**: ResNet architectures can be extremely deep, with ResNet-101 having 50+ layers, enabling the model to capture more complex patterns without performance degradation.
+
+- 
