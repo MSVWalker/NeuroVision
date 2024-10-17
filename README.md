@@ -144,15 +144,10 @@ In my experiment, I froze all the layers of the ResNet model except for the last
 - **Accuracy**: XX% on the validation set.
 - **Bounding Box MSE**: XX for the best-performing model.
 
-```bash
-| Metric         | Value      |
-|----------------|------------|
-| Accuracy       | XX%        |
-| F1 Score       | X.XX       |
-| Bounding Box MSE | X.XX       |
 
+![images](./5_README_files/7cnn_images.png)
 
-
+![matrix](./5_README_files/confusion_matrix.png)
 
 
 
