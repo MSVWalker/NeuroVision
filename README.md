@@ -72,11 +72,11 @@ A Convolutional Neural Network (CNN) is a specialized deep learning model design
    - This scanning process allows CNNs to learn which features are most important for classifying objects.
 
 **Image with Trained Filters Applied**  
-![Example Filter](./5_README_files/filters.png){ width=80% }
+![Example Filter](./5_README_files/filters.png)
 
 |                     CNN Model Overview                     |          CNN Image Scanning (3x3 Kernel)          |
 |:----------------------------------------------------------:|:-------------------------------------------------:|
-| ![3x3 Kernel with Calculation](5_README_files/convpic.png){ width=80% } | ![CNN Image Scanning](5_README_files/cnnscan.png){ width=80% } |
+| ![3x3 Kernel with Calculation](5_README_files/convpic.png)| ![CNN Image Scanning](5_README_files/cnnscan.png) |
 
 
 #### How CNNs Work
@@ -94,7 +94,7 @@ In this section, we detail the parameter tuning experiments conducted during the
 #### 3.1 Training Set Size
 - **Sizes Tested**: 1,000, 2,500, 5,000, 7,900 images
 - **Takeaway**: Both training and validation accuracy greatly improved with increased images.
-  ![Image Number Skew](./5_README_files/image_number.png){ width=95% }
+  ![Image Number Skew](./5_README_files/image_number.png)
 
 #### 3.2 Convolutional Layers
 - **Layers Tested**: 1 layer, 3 layers, 5 layers, 7 layers
@@ -104,9 +104,9 @@ In this section, we detail the parameter tuning experiments conducted during the
 - **Techniques Applied**: Gaussian Noise, Color Jitter, Rotation
 - **Takeaway**: Improved generalization by introducing variations in the training data, thereby improving robustness against overfitting.
   
-![Augmentation Skew - Color Jitter, Noise, Rotation](./5_README_files/augmentations.png){ width=0.9\linewidth }
+![Augmentation Skew - Color Jitter, Noise, Rotation](./5_README_files/augmentations.png)
 
-![Augmentation Skew2 - Additional Conv. Layer](./5_README_files/7cnns.png){ width=0.9\linewidth }
+![Augmentation Skew2 - Additional Conv. Layer](./5_README_files/7cnns.png)
 
 #### 3.4 Filter, Kernel, and Batch Sizes
 - **Parameters Tuned**: Filter sizes, Kernel sizes, Batch sizes
