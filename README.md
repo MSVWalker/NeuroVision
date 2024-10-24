@@ -1,8 +1,8 @@
-![cover_photo](./5_README_files/convzebra.jpeg)
+![](./5_README_files/convzebra.jpeg)
 
 # NeuroVision
 
-This project focused on object detection using the VOC dataset, which comprises nearly 9,000 images across 20 classes, with each image containing a single object and its corresponding bounding box. A convolutional neural network (CNN) model was developed, achieving a classification accuracy of 62%. This performance is significant, especially given the limited dataset size compared to other models trained on millions of images. The project utilized seven different CNN architectures and implemented various techniques, including hyperparameter optimization, data augmentation, and adjustments to filter sizes, kernel sizes, batch normalization, and max pooling. NeuroVision emphasizes the effectiveness of CNNs for localization and classification tasks, even when trained on smaller datasets, and enhances the understanding of key concepts like Intersection over Union (IoU) in the field of computer vision.
+This project focused on object detection using the VOC dataset, which comprises nearly 9,000 images across 20 classes, with each image containing a single object and its corresponding bounding box. A convolutional neural network (CNN) model was developed, achieving a classification accuracy of 62%. This performance is significant, especially given the limited dataset size compared to other models trained on millions of images. The project utilized seven different CNN architectures and implemented various techniques, including hyperparameter optimization, data augmentation, and adjustments to filter sizes, kernel sizes, batch normalization, and max pooling. NeuroVision emphasizes the effectiveness of CNNs for localization and classification tasks, even when trained on smaller datasets, and enhances the understanding of key concepts in the field of computer vision.
 
 
 ## Project Overview
@@ -43,12 +43,12 @@ The dataset used for this project is the VOC dataset, which consists of 20 class
 ### Class Distribution
 The class distribution is illustrated in the following bar chart:
 
-![Class Distribution](./5_README_files/train_val_ds.png)
+![Class Distribution on Train and Validation Set](./5_README_files/train_val_ds.png)
 
-### Sample Images
+### Sample Images with Bounding Box
 Additionally, some sample images from the dataset, including their corresponding bounding boxes and labels, can be viewed below:
 
-![Sample Images](./5_README_files/Random_Training_Images.png)
+![Sample Images with Bounding Box](./5_README_files/Random_Training_Images.png)
 
 ### Dataset Download URLs
 The VOC dataset can be downloaded from the following links:
@@ -70,17 +70,13 @@ A Convolutional Neural Network (CNN) is a specialized deep learning model design
 3. **Scanning an Image**
    - As the filter moves across the image (a process known as convolution), it multiplies the filter values with the corresponding pixel values, producing a feature map that highlights the presence of specific features.
    - This scanning process allows CNNs to learn which features are most important for classifying objects.
-<div align="center">
-  <h4>Image with Trained Filters Applied</h4>
-  <img src="./5_README_files/filters.png" alt="Example Filter" width="400"/>
-</div>
 
-<div align="center">
-  <h4>3x3 Kernel Size with Calculation &nbsp;&nbsp;&nbsp;&nbsp; CNN Image Scanning</h4>
-  <img src="./5_README_files/cnn_kernel_gif.gif" alt="3x3 Kernel with Calculation" width="250px"/>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./5_README_files/cnn_gif.gif" alt="CNN Image Scanning" width="250px"/>
-</div>
+**Image with Trained Filters Applied**  
+![Example Filter](./5_README_files/filters.png){ width=80% }
+
+|                     CNN Model Overview                     |          CNN Image Scanning (3x3 Kernel)          |
+|:----------------------------------------------------------:|:-------------------------------------------------:|
+| ![3x3 Kernel with Calculation](5_README_files/convpic.png){ width=80% } | ![CNN Image Scanning](5_README_files/cnnscan.png){ width=80% } |
 
 
 #### How CNNs Work
@@ -96,9 +92,9 @@ In this project, CNNs were utilized to classify objects and predict their boundi
 In this section, we detail the parameter tuning experiments conducted during the training of our Convolutional Neural Networks (CNNs). The following parameters were systematically evaluated to assess their impact on model performance:
 
 #### 3.1 Training Set Size
-- **Sizes Tested**: 1,000, 2,500, 5,000, 7,800 images
+- **Sizes Tested**: 1,000, 2,500, 5,000, 7,900 images
 - **Takeaway**: Both training and validation accuracy greatly improved with increased images.
-- ![Image Number Skew](./5_README_files/image_number.png)
+  ![Image Number Skew](./5_README_files/image_number.png){ width=95% }
 
 #### 3.2 Convolutional Layers
 - **Layers Tested**: 1 layer, 3 layers, 5 layers, 7 layers
@@ -107,12 +103,14 @@ In this section, we detail the parameter tuning experiments conducted during the
 #### 3.3 Augmentation Techniques
 - **Techniques Applied**: Gaussian Noise, Color Jitter, Rotation
 - **Takeaway**: Improved generalization by introducing variations in the training data, thereby improving robustness against overfitting.
-- ![Augmentation Skew](./5_README_files/augmentations.png)
-- ![Augmentation Skew2](./5_README_files/7cnns.png)
+  
+![Augmentation Skew - Color Jitter, Noise, Rotation](./5_README_files/augmentations.png){ width=0.9\linewidth }
+
+![Augmentation Skew2 - Additional Conv. Layer](./5_README_files/7cnns.png){ width=0.9\linewidth }
 
 #### 3.4 Filter, Kernel, and Batch Sizes
 - **Parameters Tuned**: Filter sizes, Kernel sizes, Batch sizes
-- **Takeaway**: To identify the optimal configurations that lead to improved performance and convergence rates during training.
+- **Takeaway**: While filter sizes, kernel sizes, and batch sizes had a marginal impact on model performance, they hold potential for optimization in future fine-tuning efforts. It’s important to note that these parameters significantly influenced the model’s runtime and overall size, suggesting trade-offs between computational efficiency and potential performance gains.
 
 #### 3.5 Results and Observations
 - After conducting the parameter tuning experiments, we observed the following:
@@ -121,7 +119,7 @@ In this section, we detail the parameter tuning experiments conducted during the
   - **Augmentation Techniques**: Augmentation used to increase the training set diversity and reduce overfitting.
 
 #### 3.6 Conclusion
-The tuning of CNN parameters is crucial for achieving optimal model performance. Future work should include more complex models - both deeper and more novel, such as residual layers, bottlenecks, dropout etc. 
+Tuning CNN parameters is crucial for achieving optimal model performance. Future work should include more complex models - both deeper and more novel, such as residual layers, bottlenecks, dropout etc. 
 
 ## 4. Transfer Learning with ResNet
 
@@ -136,7 +134,7 @@ In my experiment, I froze all the layers of the ResNet model except for the last
   <img src="./5_README_files/resnet.png" alt="resnet">
 </p>
 
-- **Results**: From the figure, the green line indicates that ResNet achieved a validation accuracy of over **90%**.
+- **Results**: From the figure, the green line indicates that ResNet achieved a validation accuracy of over **90%** on the validation set.
 
 ## 5. Model Results Analysis
 
@@ -145,12 +143,15 @@ In my experiment, I froze all the layers of the ResNet model except for the last
 - Key metrics such as F1 scores, precision, recall, and confusion matrices were analyzed to assess model performance.
 
 ### 1. Best Model Results
-- **Model Architecture**: [e.g., ResNet, VGG, Simple CNN, etc.]
-- **Accuracy**: XX% on the validation set.
-- **Bounding Box MSE**: XX for the best-performing model.
+- **Model Architecture**: 
+
+![Model Architecture](./5_README_files/modelimage.png){ width=80% }
+
+- **Accuracy**: 62% on the validation set.
+- **Bounding Box MSE**: 0.27 for the best-performing model.`
 
 
-![images](./5_README_files/7cnn_images.png)
+![Images with Bounding Box](./5_README_files/7cnn_images.png)
 
 | Confusion Matrix | Metrics CSV |
 |-------------------|-------------|
@@ -200,11 +201,7 @@ Using MSE provides a straightforward way to evaluate bounding box predictions, h
 
 ## 6. Hardware Specifications
 
-### Overview
 Training was conducted on a MacBook Air (2021) equipped with an Apple M1 chip and 16GB of RAM. The choice of hardware significantly impacted training times and model experimentation capabilities. Each training run took approximately 12 hours, reflecting the computational limits of the hardware and the complexity of the models used.
-
-### Limitations
-While the M1 chip offers notable performance, it may restrict the ability to conduct extensive hyperparameter tuning and experimentation with deeper networks or larger datasets. Future work may benefit from more powerful GPUs or TPUs to accelerate training and improve overall model performance.
 
 ## 7. Future Work
 
@@ -219,3 +216,13 @@ To enhance model performance and accuracy, several avenues for future work have 
 
 4. **Improved Bounding Box Loss Functions**: Exploring advanced loss functions such as Intersection over Union (IoU) and Focal Loss can enhance bounding box predictions, leading to more accurate localization of objects within images.
 
+
+## Backup Images:
+Kernel Size Skew
+![Kernel Size Skew](./5_README_files/KernelSizeSkew.png){ width=0.8\linewidth }
+
+Filter Size Skew
+![Filter Size Skew](./5_README_files/FilterSizeSkew.png){ width=0.8\linewidth }
+
+Batch Size Skew
+![Batch Size Skew](./5_README_files/BatchSizeSkew.png){ width=0.8\linewidth }
